@@ -1,18 +1,53 @@
 package JavaSelfeduOOP.l14;
 
 public class Person {
-    private static Integer MAX_AGE_WEIGHT = 200;
-    private static Integer MIN_AGE_WEIGHT = 30;
+    private static final Integer MAX_AGE_WEIGHT = 200;
+    private static final Integer MIN_AGE_WEIGHT = 30;
     private Integer weight;
     private Integer age;
     private Integer grade;
     private String FIO;
 
     public Person(Integer weight, Integer age, Integer grade, String FIO) {
-        this.weight = weight;
-        this.age = age;
-        this.grade = grade;
-        this.FIO = FIO;
+        if (isValidWeight(weight))
+            this.weight = weight;
+        if (isValidAge(age))
+            this.age = age;
+        if (isValidGrade(grade))
+            this.grade = grade;
+        if (isValidFIO(FIO))
+            this.FIO = FIO;
+    }
+
+    private boolean isValidFIO(String fio) {
+        String[] arrayFIO = fio.split(" ");
+        for (String string : arrayFIO) {
+            if (!isWordWithLetters(string)) return false;
+
+
+        }
+        return true;
+    }
+
+    private boolean isWordWithLetters(String string) {
+        for (char c : string.toCharArray()) {
+            if (!Character.isLetter(c)) return false;
+        }
+        return true;
+
+    }
+
+    private boolean isValidGrade(Integer grade) {
+        return 1 <= grade && grade <= 5;
+    }
+
+    private boolean isValidAge(Integer age) {
+        return 5 <= age && age <= 100;
+
+    }
+
+    private boolean isValidWeight(Integer weight) {
+        return MIN_AGE_WEIGHT <= weight && weight <= MAX_AGE_WEIGHT;
     }
 
     public Integer getWeight() {
