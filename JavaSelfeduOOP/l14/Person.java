@@ -1,8 +1,8 @@
 package JavaSelfeduOOP.l14;
 
 public class Person {
-    private static final Integer MAX_AGE_WEIGHT = 200;
-    private static final Integer MIN_AGE_WEIGHT = 30;
+    private static final int MAX_AGE_WEIGHT = 200;
+    private static final int MIN_AGE_WEIGHT = 30;
     private Integer weight;
     private Integer age;
     private Integer grade;
