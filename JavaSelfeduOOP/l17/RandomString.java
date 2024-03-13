@@ -5,23 +5,19 @@ import java.util.Random;
 public class RandomString {
     String type;
     static String[] NAMES = {"XiaolingCeng", "HugoSaha", "AnitaOrtega", "AnthonyZhan"};
-    static Random rnd;
+    static  Random rnd = new Random();;
 
     {
-        rnd = new Random();
+
     }
 
     static String giveMe(String type) {
         switch (type) {
             case "name":
-                int length = NAMES.length;
-                return NAMES[rnd.nextInt(length-1)];
-
-            default:
-                break;
-
+                int element = rnd.nextInt(NAMES.length);
+                String str = NAMES[element];
+                return str;
         }
-
         return "";
     }
 }
