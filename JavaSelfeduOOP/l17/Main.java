@@ -1,9 +1,7 @@
 package JavaSelfeduOOP.l17;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,16 +19,16 @@ public class Main {
         List<MusicalInstrumentsPropertys> instrumentsPropertys = new ArrayList<>();
 
        instrumentsPropertys.add( new MusicalInstrumentsPropertys("Gutar",
-                1,new Dimensions(100,100,100)));
+                1,new Dimension(100,100,100)));
 
        instrumentsPropertys.add( new MusicalInstrumentsPropertys("Gutar",
-                1,new Dimensions(100,100,100)));
+                1,new Dimension(100,100,100)));
 
        instrumentsPropertys.add( new MusicalInstrumentsPropertys("Arfa",
-                2,new Dimensions(100,100,100)));
+                2,new Dimension(100,100,100)));
 
        instrumentsPropertys.add( new MusicalInstrumentsPropertys("Arfa",
-                2,new Dimensions(1,100,100)));
+                2,new Dimension(1,100,100)));
 
        instrumentsPropertys.stream().forEach(inst-> System.out.println(inst));
 

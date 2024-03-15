@@ -7,11 +7,11 @@ public class MusicalInstrumentsPropertys {
     private String instrumentName;
     private int instrumentType;
 
-    public MusicalInstrumentsPropertys(String instrumentName, int instrumentType, Dimensions dimensions) {
+    public MusicalInstrumentsPropertys(String instrumentName, int instrumentType, Dimension dimension) {
         this.instrumentName = instrumentName;
         this.instrumentType = instrumentType;
-        this.dimensions = (checkDimension(dimensions)) ? dimensions : null;
-        if (this.dimensions == null ) throw new RuntimeException("Invalid parametr of dimension ");
+        this.dimension = (checkDimension(dimension)) ? dimension : null;
+        if (this.dimension == null ) throw new RuntimeException("Invalid parametr of dimension ");
         Stats.addItem(instrumentType);
     }
 
@@ -21,17 +21,17 @@ public class MusicalInstrumentsPropertys {
         return "MusicalInstrumentsPropertys{" +
                 "instrumentName='" + instrumentName + '\'' +
                 ", instrumentType=" + instrumentType +
-                ", dimensions=" + dimensions +
+                ", dimensions=" + dimension +
                 '}';
     }
 
-    private boolean  checkDimension(Dimensions dim) {
+    private boolean  checkDimension(Dimension dim) {
         if (dim.getHeight() <= 0 || dim.getBold() <=0 || dim.getWidth() <=0) return false;
         return true;
     }
 
 
-    Dimensions dimensions;
+    Dimension dimension;
 
 
     static class Stats {
