@@ -34,5 +34,12 @@ public class Main {
 
       MusicalInstrumentsPropertys.Stats.stats.values().forEach(System.out::println);
 
+      Singletone singletone = Singletone.getInstance();
+      Singletone singletone1 = Singletone.getInstance();
+      Singletone singletone2 = Singletone.getInstance();
+        System.out.println(singletone2 == singletone);
+        System.out.println(singletone1 == singletone2);
+        System.out.println(singletone1+" "+singletone2+" "+ singletone);
+
     }
 }
