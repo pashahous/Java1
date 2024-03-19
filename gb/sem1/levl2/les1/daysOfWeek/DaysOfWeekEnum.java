@@ -1,4 +1,4 @@
-package gb.sem1.levl2.les1;
+package gb.sem1.levl2.les1.daysOfWeek;
 
 public enum DaysOfWeekEnum {
 

@@ -1,5 +1,7 @@
 package gb.sem1.levl2.les1;
 
+import gb.sem1.levl2.les1.obstacle.Obstacle;
+
 import java.util.ArrayList;
 import java.util.List;
 
