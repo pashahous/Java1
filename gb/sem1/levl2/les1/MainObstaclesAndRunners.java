@@ -30,7 +30,7 @@ public class MainObstaclesAndRunners {
             System.out.println(obstacle);
             for (int i = 0; i < sportsmens.size(); i++) {
                 if (!obstacle.overcome(sportsmens.get(i))) {
-                    System.out.println("=====Sportsmen LOSE " + sportsmens.get(i));
+                    System.out.println("=====Sportsmen LOSE " + sportsmens.get(i)+"========");
                     sportsmens.remove(i);
                 }
             }
