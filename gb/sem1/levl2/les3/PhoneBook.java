@@ -14,24 +14,16 @@ public class PhoneBook {
         System.out.println(phoneBook1.get("а"));
 
     }
-    private final Map<String, ArrayList<Integer>> phoneBook = new HashMap<>();
+    private final Map<String, Set<Integer>> phoneBook = new HashMap<>();
 
 
     public void add(String name,Integer numberPhone){
-        if (!phoneBook.containsKey(name)) {
-            phoneBook.put(name, new ArrayList<>(Collections.singletonList(numberPhone)));
-            System.out.println("Create new string "+name+" "+ phoneBook.get(name)  );
-        } else {
-            ArrayList<Integer> phonesToAdd = phoneBook.get(name);
-            phonesToAdd.add(numberPhone);
-            phoneBook.put(name, phonesToAdd);
-            System.out.println("after add \"" + name+"\""+ phoneBook.get(name) );
-        }
-
-
+        Set<Integer> phone = phoneBook.getOrDefault(name,new HashSet<>());
+        phone.add(numberPhone);
+        phoneBook.put(name,phone);
     }
 
-    public ArrayList<Integer> get(String name){
+    public Set<Integer> get(String name){
         return phoneBook.get(name);
     }
 }
