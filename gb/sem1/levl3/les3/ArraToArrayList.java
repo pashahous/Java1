@@ -18,8 +18,7 @@ public class ArraToArrayList {
     }
 
     public static <T> ArrayList<T> arrToArrList(T[] t) {
-        ArrayList<T> arr = new ArrayList<>();
-        arr.addAll(0, Arrays.asList(t));
-        return arr;
+
+        return new ArrayList<>(Arrays.asList(t));
     }
 }
