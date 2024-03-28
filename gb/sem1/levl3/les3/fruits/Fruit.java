@@ -1,4 +1,4 @@
-package gb.sem1.levl3.les3;
+package gb.sem1.levl3.les3.fruits;
 
 public class Fruit {
     Float weight;
