@@ -41,5 +41,6 @@ public class BoxFruit<T extends BoxFruit> {
             return;
         }
         another.container.addAll(this.container);
+        this.container.clear();
     }
 }
