@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleStack<T> {
+    //LIFO
     List<T> stackList;
 
     public SimpleStack() {
@@ -11,8 +12,7 @@ public class SimpleStack<T> {
     }
 
     public T pop() {
-
-        return stackList.remove(stackList.size()-1);
+        return stackList.remove(stackList.size() - 1);
     }
     public void push(T item) {
         stackList.add(0,item);
