@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class D2 {
     public static void main(String[] args) {
-        task3();
+        task4();
     }
 
     public static void task1() {
@@ -61,5 +61,19 @@ public class D2 {
             }
             i1++;
         }
+    }
+    public static void task4() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input real number:");
+        double x = scanner.nextDouble();
+        if (x >= 5) {
+            System.out.println(Math.pow(x, 2) - 10 / x + 7);
+            return;
+        }
+        if (x < 5 && x > -3) {
+            System.out.println((x + 3) * (Math.pow(x, 2) - 2));
+            return;
+        }
+        System.out.println(420);
     }
 }
