@@ -2,18 +2,12 @@ package d5;
 
 import java.util.Date;
 
-public class Car {
-   private String color;
+public class Motorbike {
+    private String color;
     private  String model;
-    private Date dateOfcreate;
 
-    public Car(String color, String model, Date dateOfcreate) {
-        this.color = color;
-        this.model = model;
-        this.dateOfcreate = dateOfcreate;
-    }
+    public Motorbike(){
 
-    public Car() {
     }
 
     public String getColor() {
@@ -39,4 +33,13 @@ public class Car {
     public void setDateOfcreate(Date dateOfcreate) {
         this.dateOfcreate = dateOfcreate;
     }
+
+    public Motorbike(String color, String model, Date dateOfcreate) {
+        this.color = color;
+        this.model = model;
+        this.dateOfcreate = dateOfcreate;
+    }
+
+    private Date dateOfcreate;
+
 }
