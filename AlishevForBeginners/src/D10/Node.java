@@ -21,9 +21,8 @@ public class Node {
         root.addNode(new Node(8), root);
         System.out.println("-------------------------");
 
-       Node.printBinaryTreeAsc(root);
-        System.out.println();
-        System.out.println("---------desc");
+        Node.printBinaryTreeAsc(root);
+        System.out.println("------------");
         Node.printBinaryTreeDesc(root);
     }
 
@@ -31,24 +30,26 @@ public class Node {
         this.value = value;
     }
 
-    public static void printBinaryTreeDesc(Node root) {
+    public static void printBinaryTreeAsc(Node root) {
 
-        if (root!= null) {
-               printBinaryTreeAsc(root.left);
+        if (root != null) {
+            printBinaryTreeAsc(root.left);
             System.out.print(root.value + " ");
             printBinaryTreeAsc(root.right);
 
         }
     }
-    public static void printBinaryTreeAsc(Node root) {
 
-        if (root!= null) {
+    public static void printBinaryTreeDesc(Node root) {
+
+        if (root != null) {
             printBinaryTreeAsc(root.right);
             System.out.print(root.value + " ");
             printBinaryTreeAsc(root.left);
 
         }
     }
+
     public void addNode(Node node, Node tree) {
         if (node.value < tree.value) {
             if (tree.left == null) tree.left = node;
