@@ -45,7 +45,5 @@ public class User {
                 '}';
     }
 
-    public void sendMessage(User user, String string){
 
-    }
 }

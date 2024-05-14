@@ -1,28 +1,29 @@
 package d13;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Message {
+    private static long id;
     private User sender;
     private User receiver;
     private String text;
-    private Date date;
-    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM dd HH:mm:ss yyyy");
+    private LocalDateTime date;
+    private static final String dateFormat = "dd-HH:mm:s";
 
     public Message(User sender, User receiver, String text) {
+        id += 1;
         this.sender = sender;
         this.receiver = receiver;
         this.text = text;
-        this.date = new Date();
+        this.date = LocalDateTime.now().plusSeconds(id);
     }
 
     @Override
     public String toString() {
         return "FROM: " + sender +
                 "\nTO: " + receiver +
-                "\nON: " + date +
-                "\nON: " + simpleDateFormat.format(text) +
+                "\nON: " + date.format(DateTimeFormatter.ofPattern(dateFormat)) +
                 "\nTEXT: " + text;
     }
 
@@ -50,11 +51,11 @@ public class Message {
         this.text = text;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }
