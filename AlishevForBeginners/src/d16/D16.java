@@ -23,7 +23,7 @@ public class D16 {
             strbldr.append(i1 + " ");
             nums[i] = i1;
         }
-        try (PrintWriter printWriter = new PrintWriter("src/d15/1.txt")) {
+        try (PrintWriter printWriter = new PrintWriter("src/d16/1.txt")) {
             printWriter.print(strbldr);
         } catch (FileNotFoundException e) {
             System.out.println("File note found");
@@ -31,7 +31,7 @@ public class D16 {
         }
         StringBuilder stringBuilder = new StringBuilder(50);
         int groupOfNumToEval = 20;
-        int countOfGrop = 0 ;
+        int countOfGrop = 0;
         float accumulator = 0;
         for (int i = 0; i < countOfNum; i++) {
             if (countOfGrop < groupOfNumToEval) {
@@ -44,7 +44,7 @@ public class D16 {
                 countOfGrop = 0;
             }
         }
-        try (PrintWriter printWriter = new PrintWriter("src/d15/2.txt");) {
+        try (PrintWriter printWriter = new PrintWriter("src/d16/2.txt");) {
             printWriter.print(stringBuilder);
         } catch (FileNotFoundException e) {
             System.out.println("Error create file");
@@ -54,8 +54,8 @@ public class D16 {
     }
 
     public static void printResult(File file) {
-        int countNum = 0;
-        double avgSum = 0;
+        float countNum = 0;
+        float avgSum = 0;
         try (PrintWriter pw = new PrintWriter(new File("src/d15/nummAvr.txt"))) {
             List<String> str = Files.readAllLines(Path.of(file.toURI()));
             for (String s : str) {
@@ -68,7 +68,7 @@ public class D16 {
                     }
                 }
             }
-            double d = avgSum / countNum;
+            float d = avgSum / countNum;
             pw.print(String.format("%.3f", d));
 
         } catch (IOException e) {
