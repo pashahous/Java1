@@ -1,12 +1,12 @@
 package finalProject.entity;
 
-public enum Tile {
+public enum Type {
     EMPTY("⬜"),
     SHIP("\\uD83D\\uDEE5"),
     SHOT("\\uD83D\\uDFE5"),
     OREOL ("\\uD83D\\uDFE6 )");
 
-    private Tile(String representation) {
+    private Type(String representation) {
         this.representation = representation;
     }
 
