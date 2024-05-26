@@ -1,4 +1,4 @@
-package finalProject;
+package finalProject.entity;
 
 public interface FieldObject {
 

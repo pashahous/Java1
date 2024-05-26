@@ -10,10 +10,10 @@ public class BattleField {
     private static int MAX_X = 10;
     private static int MAX_Y = 10;
 
-    HashMap<Coordinates, Cell> map = new HashMap<>();
+    HashMap<Coordinates, Cell> mapCell = new HashMap<>();
     HashMap<Coordinates, Ship> listOfShips = new HashMap<>();
 
-    void addShip(Ship ship) {
+    void addShip(Coordinates [] coordShip) {
 
     }
 

@@ -1,9 +1,9 @@
 package finalProject.entity;
 
 public class Cell {
-    Type tile;
+    TypeCell tile;
 
-    public Cell(Type tile) {
+    public Cell(TypeCell tile) {
         this.tile = tile;
     }
 }

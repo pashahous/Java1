@@ -2,7 +2,10 @@ package finalProject;
 
 import finalProject.entity.Coordinates;
 import finalProject.entity.Player;
+import finalProject.entity.Ship;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -11,34 +14,27 @@ public class Game {
     private Player plr2 = new Player();
 
     public void init() {
-        print("Game Sea Buttle");
+        printMessage("Game Sea Buttle");
 
-        print("Play in game? [Da=1] [Net= ] another input");
+        printMessage("Play in game? [Da=1] [Net= ] another input");
         if (!"1".equals(scr.nextLine().strip())) return;
-        print("Enter name first player");
+        printMessage("Enter name first player");
         plr1.setName(scr.nextLine());
-        print("Enter name second layer");
+        printMessage("Enter name second layer");
         plr2.setName(scr.nextLine());
-        print(String.format("Hello \"%s\" and \"%s\" lets play in game", plr1.getName(), plr2.getName()));
-        print("Player =1= enter ship position");
-        print("Enter 4 one deck ship");
-        for (int i = 0; i < 4; i++) {
-            plr1.battleField.addShip(getCoordFromConsole());
+        printMessage(String.format("Hello \"%s\" and \"%s\" lets play in game", plr1.getName(), plr2.getName()));
 
-        }
 
 
     }
 
-    private Coordinates getCoordFromConsole() {
-        String s = scr.nextLine();
-    }
+
 
     public void start() {
     }
 
 
-    private void print(String string) {
+    private void printMessage(String string) {
         System.out.println(String.format("===== %s =====", string));
     }
 }

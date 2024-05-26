@@ -36,10 +36,7 @@ public class Main {
                 }
 
             }
-
         }
-
-
         return listCoord;
     }
 }
