@@ -13,7 +13,8 @@ public class Player {
     private Scanner scr;
 
     public Player() {
-        Scanner scr = new Scanner(System.in);
+        this.scr = new Scanner(System.in);
+        this.battleField = new BattleField();
     }
 
     public String getName() {
@@ -32,22 +33,24 @@ public class Player {
         printMessage(name + " enter ship position");
         printMessage("Enter 4 single-deck ship");
         for (int i = 0; i < 4; i++) {
+            int [] arrCoord;
             String[] split;
             while (true) {
                 printMessage("Enter: " + i + 1 + " ship , in format '5,5'");
                 split = scr.nextLine().split(",");
-                if (split.length == 2) {
+                arrCoord = parseStrToCoordinates(split);
+                if (split.length == 2 && Coordinates.isValid(arrCoord)) {
                     break;
                 }
                 System.out.println("Input data must be 'x,x' your data " + split.toString());
             }
-            parseStrToCoordinates(split);
+            battleField.addShip(arrCoord);
 
         }
     }
 
     private int[] parseStrToCoordinates(String[] inputDataString) {
-        if (inputDataString.length == 1) {
+        if (inputDataString.length == 2) {
             int x0 = Integer.parseInt(inputDataString[0].strip());
             int y0 = Integer.parseInt(inputDataString[1].strip());
 
@@ -63,29 +66,6 @@ public class Player {
 
     }
 
-    private void generateCoordAndAddShip(int[] arr) {
-        List<Coordinates> listCoord = new ArrayList<>();
-        if (arr.length > 2) {
-            int xStart = arr[0];
-            int yStart = arr[1];
-            int xEnd = arr[2];
-            int yEnd = arr[3];
-            if (xStart == xEnd) {//vertikal
-                for (int y = yStart; y <= yEnd; y++) {
-                    listCoord.add(new Coordinates(xStart, y));
-                }
-                battleField.a
-            } else if (yStart == yEnd) {
-                //horizontal
-                for (int x = xStart; x <= xEnd; x++) {
-                    listCoord.add(new Coordinates(x, yStart));
-                }
-
-            }
-        } else {
-
-        }
-    }
 
 
     private void printMessage(String string) {

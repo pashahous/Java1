@@ -34,7 +34,6 @@ public class Main {
                 for (int x = xStart; x <= xEnd; x++) {
                     listCoord.add(new Coordinates(x, yStart));
                 }
-
             }
         }
         return listCoord;
