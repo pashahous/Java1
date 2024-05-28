@@ -1,7 +1,7 @@
 package finalProject;
 
 public class FieldConsoleRender {
-    public void render(BattleField field) {
+    public void render(Board field) {
 
     }
 }

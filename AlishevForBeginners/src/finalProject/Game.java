@@ -25,6 +25,7 @@ public class Game {
 //        printMessage(String.format("Hello \"%s\" and \"%s\" lets play in game", plr1.getName(), plr2.getName()));
 
 plr1.addShips();
+plr1.battleField.render();
 plr2.addShips();
 
     }

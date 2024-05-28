@@ -1,6 +1,5 @@
 package finalProject;
 
-import finalProject.entity.Cell;
 import finalProject.entity.Coordinates;
 import finalProject.entity.Ship;
 import finalProject.entity.TypeCell;
@@ -9,19 +8,40 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class BattleField {
+public class Board {
+    private static int MAX_X = 10;
+    private static int MAX_Y = 10;
 
-
-    HashMap<Coordinates, Cell> mapCell = new HashMap<>();
+    HashMap<Coordinates, TypeCell> mapCell = new HashMap<>();
     List<Ship> listOfShips = new ArrayList<>();
 
-    public void addShip(int [] arr) {
+    public boolean addShip(int[] arr) {
         List<Coordinates> coordinates = generateCoordAndAddShip(arr);
         for (Coordinates coordinate : coordinates) {
-            mapCell.put(coordinate, new Cell(TypeCell.SHIP));
+            if (mapCell.containsKey(coordinate)) {
+                System.out.println("This coordinate exists");
+                return false;
+            }
+            mapCell.put(coordinate, TypeCell.SHIP);
         }
         listOfShips.add(new Ship(coordinates));
+        return true;
 
+
+    }
+
+    public void render() {
+        System.out.println("  0 1 2 3 4 5 6 7 8 9");
+        System.out.println("  -------------------");
+        for (int y = 0; y < MAX_Y; y++) {
+            System.out.print(y + "|");
+            for (int x = 0; x < MAX_X; x++) {
+                TypeCell typeCell= mapCell.get(new Coordinates(x, y));
+                System.out.print(typeCell.getRepresentation());
+            }
+            System.out.println("");
+
+        }
 
     }
 

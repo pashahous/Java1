@@ -12,15 +12,19 @@ public class Coordinates {
     }
 
     public static boolean isValid(int[] arr) {
-       if(arr.length == 2){
-       if (arr[0]< MAX_X || arr[0] >= 0 && arr[1] < MAX_Y || arr[1]>=0) return true;
-       } else if (arr.length == 4) {
-           if (arr[0]< MAX_X || arr[0] >= 0 && arr[1] < MAX_Y || arr[1]>=0
-                ||arr[2]< MAX_X || arr[2] >= 0 && arr[3] < MAX_Y || arr[3]>=0
-           ) return true;
-       }
-       return  false;
+        if (arr.length == 2) {// check coordinate
+            if (arr[0] < MAX_X && arr[0] >= 0 && arr[1] < MAX_Y && arr[1] >= 0) return true;
+        } else if (arr.length == 4) {
+            if (arr[0] < MAX_X && arr[0] >= 0 && arr[1] < MAX_Y && arr[1] >= 0
+                    || arr[2] < MAX_X && arr[2] >= 0 && arr[3] < MAX_Y && arr[3] >= 0
+            ) return true;
+        }
+        System.out.println("Input data not valid.\n " +
+                "Valid data 0 <= X < 10; 0 <= Y < 10\n" +
+                " Your data: " + arr[0] + " " + arr[1]);
+        return false;
     }
+
     @Override
     public String toString() {
         return "Coordinates{" +
