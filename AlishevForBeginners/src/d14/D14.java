@@ -33,7 +33,7 @@ public class D14 {
                 }
                 if (integersList.size() != expectedNumOfNumbs) throw
                         new IllegalArgumentException(MessageFormat.
-                                format("Неверное количество входных элементов. {0} А должно быть - {1}",
+                                format("Неверное количество входных элементов {0}; А должно быть - {1}",
                                         integersList.size(), expectedNumOfNumbs));
                 int sumNums = integersList.stream().mapToInt(Integer::intValue).sum();
                 System.out.println(sumNums);

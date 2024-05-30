@@ -37,6 +37,9 @@ public class Board {
             System.out.print(y + "|");
             for (int x = 0; x < MAX_X; x++) {
                 TypeCell typeCell= mapCell.get(new Coordinates(x, y));
+                if (typeCell == null) {
+                    System.out.print("⬜");
+                } else
                 System.out.print(typeCell.getRepresentation());
             }
             System.out.println("");

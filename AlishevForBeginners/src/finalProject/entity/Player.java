@@ -57,6 +57,7 @@ public class Player {
                 int numOfCooord = numOfShips < 4 ? 4 : 2;
                 if (split.length == numOfCooord && Coordinates.isValid(intStream)) {
                     if (battleField.addShip(intStream)) {
+                        battleField.render();
                         break;
                     }
                 }

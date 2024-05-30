@@ -8,11 +8,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println(generateCoordOfShip(new int[]{1, 3, 3, 3}));
-        System.out.println(generateCoordOfShip(new int[]{0, 0, 3, 0}));
-        System.out.println(generateCoordOfShip(new int[]{0, 0, 0, 3}));
-        System.out.println(generateCoordOfShip(new int[]{0, 0, 0, 1}));
-        Game game = new Game();
+       Game game = new Game();
         game.init();
         game.start();
     }
