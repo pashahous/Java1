@@ -1,11 +1,7 @@
 package finalProject;
 
-import finalProject.entity.Coordinates;
 import finalProject.entity.Player;
-import finalProject.entity.Ship;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -24,9 +20,9 @@ public class Game {
 //        plr2.setName(scr.nextLine());
 //        printMessage(String.format("Hello \"%s\" and \"%s\" lets play in game", plr1.getName(), plr2.getName()));
 
-plr1.addShips();
+plr1.setapShips();
 plr1.battleField.render();
-plr2.addShips();
+plr2.setapShips();
 
     }
 

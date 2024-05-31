@@ -1,17 +1,25 @@
 package finalProject.entity;
 
-public class Coordinates {
+public class Cell {
     private static int MAX_X = 10;
     private static int MAX_Y = 10;
-    int x;
-    int y;
+    public int x;
+    public int y;
+    TypeCell typeCell;
 
-    public Coordinates(int x, int y) {
+    public Cell(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
+    public Cell(int x, int y, TypeCell typeCell) {
+        this.x = x;
+        this.y = y;
+        this.typeCell = typeCell;
+    }
+
     public static boolean isValid(int[] arr) {
+        //проверка что координаты не выходят за границы поля
         if (arr.length == 2) {// check coordinate
             if (arr[0] < MAX_X && arr[0] >= 0 && arr[1] < MAX_Y && arr[1] >= 0) return true;
         } else if (arr.length == 4) {
@@ -19,9 +27,9 @@ public class Coordinates {
                     || arr[2] < MAX_X && arr[2] >= 0 && arr[3] < MAX_Y && arr[3] >= 0
             ) return true;
         }
-        System.out.println("Input data not valid.\n " +
-                "Valid data 0 <= X < 10; 0 <= Y < 10\n" +
-                " Your data: " + arr[0] + " " + arr[1]);
+//        System.out.println("Input data not valid.\n " +
+//                "Valid data 0 <= X < 10; 0 <= Y < 10\n" +
+//                " Your data: " + arr[0] + " " + arr[1]);
         return false;
     }
 
@@ -36,9 +44,9 @@ public class Coordinates {
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Coordinates)) return false;
+        if (!(o instanceof Cell)) return false;
 
-        Coordinates that = (Coordinates) o;
+        Cell that = (Cell) o;
         return x == that.x && y == that.y;
     }
 

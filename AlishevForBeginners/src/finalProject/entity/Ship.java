@@ -6,12 +6,12 @@ import java.util.Map;
 
 public class Ship {
     public static String representation = TypeCell.SHIP.getRepresentation();
-    public Map<Coordinates, Boolean> shipDecks;
+    public Map<Cell, Boolean> shipDecks;
 
-    public Ship(List<Coordinates> coordinates) {
+    public Ship(List<Cell> cell) {
         // add coord of deck in Ship class with parameter True, this mean what deck of ship is not  damage
         this.shipDecks = new HashMap<>();
-        for (Coordinates coordinate : coordinates) {
+        for (Cell coordinate : cell) {
             this.shipDecks.put(coordinate, true);
         }
         System.out.println(this);

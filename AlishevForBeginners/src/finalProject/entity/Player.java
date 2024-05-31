@@ -23,7 +23,7 @@ public class Player {
         this.name = name;
     }
 
-    public void makeShot(Coordinates coordinates) {
+    public void makeShot(Cell cell) {
 
     }
 
@@ -32,61 +32,69 @@ public class Player {
 
     }
 
-    public void addShips() {
+    public void setapShips() {
+        battleField.render();
         printMessage(name + " enter ship position");
-//        printMessage("Enter 4, 1-deck ship");
+//        printMessage("Enter four , 1-deck ship");
 //        requestShipCoordinate(4);
-        printMessage("Enter 3, 2-deck ship");
+        printMessage("Enter three, 2-deck ship");
         requestShipCoordinate(3);
-        printMessage("Enter 2, 3-deck ship");
+        printMessage("Enter two, 3-deck ship");
         requestShipCoordinate(2);
-        printMessage("Enter 1, 4-deck ship");
+        printMessage("Enter one, 4-deck ship");
         requestShipCoordinate(1);
     }
 
     private void requestShipCoordinate(int numOfShips) {
+        //request coordinate for new Ship
         for (int i = 0; i < numOfShips; i++) {
             while (true) {
-                printMessage("Enter: " + (i + 1) + " ship , in format '5,5'");
+                printMessage(numOfShips == 4 ? numberToOrdinal(i + 1) + " ship , in format (x y)" : numberToOrdinal(i + 1) + " ship in format (x y x y)");
                 String[] split = scr.nextLine().strip().split(" ");
                 if (split.length < 2) {
                     System.out.println("Empty input!!!");
                     break;
                 }
-                int[] intStream = Arrays.stream(split).mapToInt(Integer::parseInt).toArray();
+                int[] intStream = null;
+                try {
+                    intStream = Arrays.stream(split).mapToInt(Integer::parseInt).toArray();
+                } catch (NumberFormatException e) {
+                    System.out.println("Input data must be" + (numOfShips == 4 ?
+                            "  in format 'x y' " : " in format 'x y x y' ") + " your data " + Arrays.toString(split));
+                    break;
+                }
                 int numOfCooord = numOfShips < 4 ? 4 : 2;
-                if (split.length == numOfCooord && Coordinates.isValid(intStream)) {
-                    if (battleField.addShip(intStream)) {
+                if (split.length == numOfCooord && Cell.isValid(intStream)) {
+                    int sizeShip = 5 - numOfShips;
+                    if (battleField.addShip(intStream, sizeShip)) {
                         battleField.render();
                         break;
                     }
                 }
-                System.out.println("Input data must be 'x,x' your data " + Arrays.toString(split));
+                System.out.println("Input data must be" + (numOfShips == 4 ?
+                        "  in format 'x y' " : " in format 'x y x y' ") + " your data " +
+                        Arrays.toString(split));
             }
 
         }
     }
 
-    private int[] parseArrToCoordinates(int[] arr) {
-        if (arr.length == 2) {
-            int x0 = arr[0];
-            int y0 = arr[1];
-
-            return new int[]{x0, y0};
-        } else if (arr.length == 4) {
-            int x0 = arr[0];
-            int y0 = arr[1];
-            int x1 = arr[2];
-            int y1 = arr[3];
-            return new int[]{x0, y0, x1, y1};
+    private String numberToOrdinal(int i) {
+        switch (i) {
+            case 1:
+                return "First(1)";
+            case 2:
+                return "Second(2)";
+            case 3:
+                return "Third(3)";
+            case 4:
+                return "Fourth(4)";
         }
-        return new int[]{};
+        return "";
 
     }
-
 
     private void printMessage(String string) {
         System.out.println(String.format("===== %s =====", string));
     }
-
 }
