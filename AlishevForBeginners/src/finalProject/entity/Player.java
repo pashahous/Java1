@@ -1,7 +1,5 @@
 package finalProject.entity;
 
-import finalProject.Board;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -9,6 +7,12 @@ public class Player {
     public Board battleField;
     private String name;
     private final Scanner scr;
+
+    public Player(String name) {
+        this.scr = new Scanner(System.in);
+        this.battleField = new Board();
+        this.name = name;
+    }
 
     public Player() {
         this.scr = new Scanner(System.in);
@@ -19,15 +23,34 @@ public class Player {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public boolean makeShot(Board battleField) {
+        String[] str;
+        boolean isHitTarget = false;
+        while (true) {
+            printMessage(name + " Enter coordinates of shot (x y)");
+battleField.render();
+            str = scr.nextLine().strip().split(" ");
+            if (str.length != 2) {
+                printMessage("Wrong input: your data - " + Arrays.toString(str));
+                continue;
+            }
+            try {
+                int[] arrOfNum = Arrays.stream(str).mapToInt(Integer::parseInt).toArray();
+                if (Cell.isValid(arrOfNum)) {
+                    isHitTarget = battleField.shot(arrOfNum);
+                    battleField.render();
+                    break;
+                }
+
+            } catch (NumberFormatException e) {
+                printMessage("Wrong input: your data - " + Arrays.toString(str));
+            }
+        }
+        return isHitTarget;
+
     }
 
-    public void makeShot(Cell cell) {
-
-    }
-
-    public void addOneShip(int[] arr) {
+    public void addShip(int[] arr) {
 
 
     }
@@ -37,10 +60,10 @@ public class Player {
         printMessage(name + " enter ship position");
 //        printMessage("Enter four , 1-deck ship");
 //        requestShipCoordinate(4);
-        printMessage("Enter three, 2-deck ship");
-        requestShipCoordinate(3);
-        printMessage("Enter two, 3-deck ship");
-        requestShipCoordinate(2);
+  //      printMessage("Enter three, 2-deck ship");
+//        requestShipCoordinate(3);
+//        printMessage("Enter two, 3-deck ship");
+//        requestShipCoordinate(2);
         printMessage("Enter one, 4-deck ship");
         requestShipCoordinate(1);
     }
@@ -78,6 +101,14 @@ public class Player {
 
         }
     }
+    public boolean isGameOver() {
+        for (Ship ship : battleField.listOfShips) {
+            if (ship.isAlive()) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     private String numberToOrdinal(int i) {
         switch (i) {
@@ -97,4 +128,5 @@ public class Player {
     private void printMessage(String string) {
         System.out.println(String.format("===== %s =====", string));
     }
+
 }

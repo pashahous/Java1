@@ -2,9 +2,9 @@ package finalProject.entity;
 
 public enum TypeCell {
     EMPTY("."),
-    SHIP("o"),
+    SHIP("\u25CB"),
     SHOT("x"),
-    OREOL ("\"");
+    OREOL ("-");
 
     private TypeCell(String representation) {
         this.representation = representation;

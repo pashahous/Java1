@@ -12,11 +12,6 @@ public class Cell {
         this.y = y;
     }
 
-    public Cell(int x, int y, TypeCell typeCell) {
-        this.x = x;
-        this.y = y;
-        this.typeCell = typeCell;
-    }
 
     public static boolean isValid(int[] arr) {
         //проверка что координаты не выходят за границы поля

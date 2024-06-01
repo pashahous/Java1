@@ -25,6 +25,9 @@ public class Ship {
     }
 
     public boolean isAlive() {
-         return shipDecks.values().stream().allMatch(v->!v);
+        for (Boolean isAlive : shipDecks.values()) {
+            if (isAlive) return true;
+        }
+        return false;
      }
 }
