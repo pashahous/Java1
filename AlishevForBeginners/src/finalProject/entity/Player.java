@@ -28,7 +28,7 @@ public class Player {
         boolean isHitTarget = false;
         while (true) {
             printMessage(name + " Enter coordinates of shot (x y)");
-battleField.render();
+            battleField.renderShotsFiled();
             str = scr.nextLine().strip().split(" ");
             if (str.length != 2) {
                 printMessage("Wrong input: your data - " + Arrays.toString(str));
@@ -38,7 +38,7 @@ battleField.render();
                 int[] arrOfNum = Arrays.stream(str).mapToInt(Integer::parseInt).toArray();
                 if (Cell.isValid(arrOfNum)) {
                     isHitTarget = battleField.shot(arrOfNum);
-                    battleField.render();
+                    battleField.renderShotsFiled();
                     break;
                 }
 
@@ -47,20 +47,14 @@ battleField.render();
             }
         }
         return isHitTarget;
-
-    }
-
-    public void addShip(int[] arr) {
-
-
     }
 
     public void setapShips() {
-        battleField.render();
+        battleField.renderInitField();
         printMessage(name + " enter ship position");
 //        printMessage("Enter four , 1-deck ship");
 //        requestShipCoordinate(4);
-  //      printMessage("Enter three, 2-deck ship");
+        //      printMessage("Enter three, 2-deck ship");
 //        requestShipCoordinate(3);
 //        printMessage("Enter two, 3-deck ship");
 //        requestShipCoordinate(2);
@@ -90,7 +84,7 @@ battleField.render();
                 if (split.length == numOfCooord && Cell.isValid(intStream)) {
                     int sizeShip = 5 - numOfShips;
                     if (battleField.addShip(intStream, sizeShip)) {
-                        battleField.render();
+                        battleField.renderInitField();
                         break;
                     }
                 }
@@ -101,6 +95,7 @@ battleField.render();
 
         }
     }
+
     public boolean isGameOver() {
         for (Ship ship : battleField.listOfShips) {
             if (ship.isAlive()) {

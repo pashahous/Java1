@@ -6,13 +6,13 @@ public class Board {
     private static final int MAX_X = 10;
     private static final int MAX_Y = 10;
 
-    HashMap<Cell, TypeCell> mapCell = new HashMap<>();
+    HashMap<Cell, TypeCell> gameField = new HashMap<>();
     List<Ship> listOfShips = new ArrayList<>();
-    Map<Cell,TypeCell> listOfShots = new HashMap<>();
+    Map<Cell,TypeCell> listOfShotsField = new HashMap<>();
 //todo доделать отображение поля с выстрелами и подбитвыми кораблями
     public boolean shot(int [] cellCoord) {
         Cell cell = new Cell(cellCoord[0], cellCoord[1]);
-        mapCell.put(cell,TypeCell.SHOT);
+        gameField.put(cell,TypeCell.SHOT);
         for (Ship ship : listOfShips) {
             if(ship.shipDecks.containsKey(cell)){
                 ship.shipDecks.put(cell,true);
@@ -30,18 +30,18 @@ public class Board {
         }
         List<Cell> cellsOfOreol = getGenerateOreols(cellOfShip);// get oreolList;
         for (Cell cell : cellOfShip) {
-            if (mapCell.containsKey(cell)) {// проверяем есть ли в mapCell объект с такими же коориднатами,
+            if (gameField.containsKey(cell)) {// проверяем есть ли в mapCell объект с такими же коориднатами,
                 // сравнение клеток только по координатам
                 System.out.println("This cell occupied");
                 return false;
             }
         }
         for (Cell oreolCell : cellsOfOreol) {// add oreol list
-            mapCell.put(oreolCell, TypeCell.OREOL);
+            gameField.put(oreolCell, TypeCell.OREOL);
         }
 
         for (Cell cell : cellOfShip) {// add ship in mapCell TODO дублирование типа клетки как в МАП так и в свойствах самой клетки
-            mapCell.put(cell, TypeCell.SHIP);
+            gameField.put(cell, TypeCell.SHIP);
         }
 
         listOfShips.add(new Ship(cellOfShip));
@@ -65,16 +65,30 @@ public class Board {
         return oreolList;
     }
 
-    public void render() {
+    public void renderInitField() {
         System.out.println("  0123456789");
         for (int y = 0; y < MAX_Y; y++) {
             System.out.print(y + "|");
             for (int x = 0; x < MAX_X; x++) {
-                TypeCell typeCell = mapCell.get(new Cell(x, y));
+                TypeCell typeCell = gameField.get(new Cell(x, y));
                 System.out.print(Objects.requireNonNullElse(typeCell, TypeCell.EMPTY).getRepresentation());
             }
             System.out.println();
         }
+
+    }
+
+    public void renderShotsFiled() {
+        System.out.println("  0123456789");
+        for (int y = 0; y < MAX_Y; y++) {
+            System.out.print(y + "|");
+            for (int x = 0; x < MAX_X; x++) {
+                TypeCell typeCell = listOfShotsField.get(new Cell(x, y));
+                System.out.print(Objects.requireNonNullElse(typeCell, TypeCell.EMPTY).getRepresentation());
+            }
+            System.out.println();
+        }
+
 
     }
 

@@ -22,9 +22,6 @@ public class Cell {
                     || arr[2] < MAX_X && arr[2] >= 0 && arr[3] < MAX_Y && arr[3] >= 0
             ) return true;
         }
-//        System.out.println("Input data not valid.\n " +
-//                "Valid data 0 <= X < 10; 0 <= Y < 10\n" +
-//                " Your data: " + arr[0] + " " + arr[1]);
         return false;
     }
 

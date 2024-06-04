@@ -4,6 +4,7 @@ public enum TypeCell {
     EMPTY("."),
     SHIP("\u25CB"),
     SHOT("x"),
+    DAMAGESHIP("#"),
     OREOL ("-");
 
     private TypeCell(String representation) {
