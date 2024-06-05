@@ -28,7 +28,7 @@ public class Player {
         boolean isHitTarget = false;
         while (true) {
             printMessage(name + " Enter coordinates of shot (x y)");
-            battleField.renderShotsFiled();
+            battleField.renderShotsFiled(); // render field befor shot
             str = scr.nextLine().strip().split(" ");
             if (str.length != 2) {
                 printMessage("Wrong input: your data - " + Arrays.toString(str));
@@ -37,16 +37,15 @@ public class Player {
             try {
                 int[] arrOfNum = Arrays.stream(str).mapToInt(Integer::parseInt).toArray();
                 if (Cell.isValid(arrOfNum)) {
-                    isHitTarget = battleField.shot(arrOfNum);
+                    isHitTarget = battleField.shot(arrOfNum); // render field after shot
                     battleField.renderShotsFiled();
-                    break;
+                    return isHitTarget;
                 }
 
             } catch (NumberFormatException e) {
                 printMessage("Wrong input: your data - " + Arrays.toString(str));
             }
         }
-        return isHitTarget;
     }
 
     public void setapShips() {

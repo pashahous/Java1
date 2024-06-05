@@ -37,7 +37,7 @@ public class Game {
                     printMessage(plr1.getName() + "  WIIIN!!!");
                     return;
                 }
-                if (!isHit) {
+                if ( isHit) {
                     printMessage(" HIT THE SHIP, YOU CAN SHOT AGAIN");
                 } else {
                     printMessage("You MISSED");
@@ -46,7 +46,7 @@ public class Game {
             } else {
                 boolean isHit = plr2.makeShot(plr1.battleField);
                 if (plr1.isGameOver()) {
-                    printMessage(plr1.getName() + "  WIIIN!!!");
+                    printMessage(plr2.getName() + "  WIIIN!!!");
                     return;
                 }
 

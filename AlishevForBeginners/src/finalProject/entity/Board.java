@@ -12,14 +12,18 @@ public class Board {
 //todo доделать отображение поля с выстрелами и подбитвыми кораблями
     public boolean shot(int [] cellCoord) {
         Cell cell = new Cell(cellCoord[0], cellCoord[1]);
-        gameField.put(cell,TypeCell.SHOT);
         for (Ship ship : listOfShips) {
-            if(ship.shipDecks.containsKey(cell)){
-                ship.shipDecks.put(cell,true);
-                return true;
+            if(ship.shipDecks.containsKey(cell)){// is hit ship
+                gameField.put(cell,TypeCell.DAMAGESHIP);
+                listOfShotsField.put(cell,TypeCell.DAMAGESHIP);
+                ship.shipDecks.put(cell,false);
+                return true;// ye
             }
         }
-        return false;
+        gameField.put(cell, TypeCell.SHOT);
+        listOfShotsField.put(cell,TypeCell.SHOT);
+
+        return false;// no hit
     }
 
     public boolean addShip(int[] arr, int sizeShip) {
