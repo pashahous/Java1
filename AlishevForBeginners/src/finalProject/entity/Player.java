@@ -8,6 +8,10 @@ public class Player {
     private String name;
     private final Scanner scr;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Player(String name) {
         this.scr = new Scanner(System.in);
         this.battleField = new Board();
@@ -51,12 +55,12 @@ public class Player {
     public void setapShips() {
         battleField.renderInitField();
         printMessage(name + " enter ship position");
-//        printMessage("Enter four , 1-deck ship");
-//        requestShipCoordinate(4);
-        //      printMessage("Enter three, 2-deck ship");
-//        requestShipCoordinate(3);
-//        printMessage("Enter two, 3-deck ship");
-//        requestShipCoordinate(2);
+        printMessage("Enter four , 1-deck ship");
+        requestShipCoordinate(4);
+              printMessage("Enter three, 2-deck ship");
+        requestShipCoordinate(3);
+        printMessage("Enter two, 3-deck ship");
+        requestShipCoordinate(2);
         printMessage("Enter one, 4-deck ship");
         requestShipCoordinate(1);
     }

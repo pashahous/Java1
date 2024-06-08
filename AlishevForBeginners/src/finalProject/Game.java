@@ -3,23 +3,22 @@ package finalProject;
 import finalProject.entity.Player;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
     private Player plr1;
     private Player plr2;
+    private Scanner scr = new Scanner(System.in);
 
     public void init() {
         printMessage("Game Sea Buttle");
-
-        printMessage("Play in game? [Da=1] [Net=\" \"] another input");
-        plr1 = new Player("1111");
-        plr2 = new Player("2222");
-//        if (!"1".equals(scr.nextLine().strip())) return;
-//        printMessage("Enter name first player");
-//        plr1.setName(scr.nextLine());
-//        printMessage("Enter name second layer");
-//        plr2.setName(scr.nextLine());
-//        printMessage(String.format("Hello \"%s\" and \"%s\" lets play in game", plr1.getName(), plr2.getName()));
+        plr1 = new Player();
+        plr2 = new Player();
+        printMessage("Enter name first player");
+        plr1.setName(scr.nextLine());
+        printMessage("Enter name second layer");
+        plr2.setName(scr.nextLine());
+        printMessage(String.format("Hello \"%s\" and \"%s\" lets play in game", plr1.getName(), plr2.getName()));
         plr1.setapShips();
         plr2.setapShips();
     }
@@ -37,7 +36,7 @@ public class Game {
                     printMessage(plr1.getName() + "  WIIIN!!!");
                     return;
                 }
-                if ( isHit) {
+                if (isHit) {
                     printMessage(" HIT THE SHIP, YOU CAN SHOT AGAIN");
                 } else {
                     printMessage("You MISSED");
