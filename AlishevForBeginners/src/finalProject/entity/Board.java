@@ -53,6 +53,7 @@ public class Board {
     }
 
     private List<Cell> getGenerateOreols(List<Cell> cellListOfShip) {
+        // list of cell where can`t insert new ship
         List<Cell> oreolList = new ArrayList<>();
         int[][] dirrection = {{0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}, {-1, 0}, {-1, 1}};
         for (Cell cell : cellListOfShip) {
